@@ -1,4 +1,5 @@
-﻿using ClearBank.DeveloperTest.Types;
+﻿using ClearBank.DeveloperTest.Common;
+using ClearBank.DeveloperTest.Types;
 
 namespace ClearBank.DeveloperTest.Services
 {
@@ -12,7 +13,7 @@ namespace ClearBank.DeveloperTest.Services
         {
             _dataStoreService = dataStoreService;
             _calculationService = calculationService;
-            _dataStoreType = configurationService.DataStoreType();
+            _dataStoreType = configurationService.GetAppSettingForKey(Constants.DataStoreTypeKey);
         }
 
         public Account GetAccount(string accountNumber)
