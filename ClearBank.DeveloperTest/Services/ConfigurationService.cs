@@ -4,11 +4,11 @@ namespace ClearBank.DeveloperTest.Services
 {
     public class ConfigurationService : IConfigurationService
     {
-        public string DataStoreType()
+        public string GetAppSettingForKey(string key)
         {
-            var dataStoreType = ConfigurationManager.AppSettings["DataStoreType"];
+            var value = ConfigurationManager.AppSettings[key];
 
-            return string.IsNullOrEmpty(dataStoreType) ? string.Empty : dataStoreType;
+            return string.IsNullOrEmpty(value) ? string.Empty : value;
         }
     }
 }

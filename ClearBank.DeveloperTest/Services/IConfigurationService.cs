@@ -2,6 +2,6 @@
 {
     public interface IConfigurationService
     {
-        string DataStoreType();
+        string GetAppSettingForKey(string key);
     }
 }
