@@ -1,0 +1,9 @@
+branches:
+  only:
+  - ci
+before_build:
+  - nuget restore
+configuration: Release
+build:
+  project: ClearBank.DeveloperTest.sln
+  verbosity: detailed
