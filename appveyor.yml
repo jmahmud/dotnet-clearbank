@@ -6,4 +6,4 @@ before_build:
 configuration: Release
 build:
   project: ClearBank.DeveloperTest.sln
-  verbosity: detailed
+  verbosity: minimal
