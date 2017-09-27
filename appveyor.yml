@@ -7,3 +7,7 @@ configuration: Release
 build:
   project: ClearBank.DeveloperTest.sln
   verbosity: minimal
+test:
+  assemblies:
+    only:
+      - ClearBank.DeveloperTest.Tests.dll
