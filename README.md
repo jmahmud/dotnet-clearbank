@@ -22,9 +22,3 @@ This uses the following technology...
 - OpenCover
 - Coveralls
 - coveralls.io
-
-Install
-------------
-Restore nuget packages
-
-`nuget install`
