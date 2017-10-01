@@ -7,7 +7,5 @@ configuration: Release
 build:
   project: ClearBank.DeveloperTest.sln
   verbosity: minimal
-test:
-  assemblies:
-    only:
-      - ClearBank.DeveloperTest.Tests.dll
+test_script:
+  - ps: .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -target:nunit3-console.exe "-targetargs:""ClearBank.DeveloperTest.Tests\bin\$env:CONFIGURATION\ClearBank.DeveloperTest.Tests.dll""" -register:user -filter:"+[ClearBank.DeveloperTest*]* -[ClearBank.DeveloperTest.Test]*" -output:Coverage.xml
