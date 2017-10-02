@@ -1,7 +1,3 @@
-branches:
-  only:
-  - ci
-
 configuration: Release
 
 before_build:
