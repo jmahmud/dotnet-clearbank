@@ -4,7 +4,7 @@ namespace ClearBank.DeveloperTest.Services
 {
     public class ChapsValidator : IValidator
     {
-        public bool IsValid(Account account, MakePaymentRequest request)
+        public virtual bool IsValid(Account account, MakePaymentRequest request)
         {
             if (account == null) return false;
             
