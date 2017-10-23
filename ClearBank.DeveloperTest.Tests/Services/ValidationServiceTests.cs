@@ -19,11 +19,11 @@ namespace ClearBank.DeveloperTest.Tests.Services
 
             _validationService = new ValidationService
             {
-                Validators = new Dictionary<string, IValidator>
+                Validators = new Dictionary<PaymentScheme, IValidator>
                 {
-                    { PaymentScheme.Bacs.ToString(), _validatorMock.Object },
-                    { PaymentScheme.FasterPayments.ToString(), _validatorMock.Object },
-                    { PaymentScheme.Chaps.ToString(), _validatorMock.Object }
+                    { PaymentScheme.Bacs, _validatorMock.Object },
+                    { PaymentScheme.FasterPayments, _validatorMock.Object },
+                    { PaymentScheme.Chaps, _validatorMock.Object }
                 }
             };
         }
