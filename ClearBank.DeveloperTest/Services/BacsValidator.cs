@@ -4,7 +4,7 @@ namespace ClearBank.DeveloperTest.Services
 {
     public class BacsValidator : IValidator
     {
-        public bool IsValid(Account account, MakePaymentRequest request)
+        public virtual bool IsValid(Account account, MakePaymentRequest request)
         {
             return account != null && account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.Bacs);
         }

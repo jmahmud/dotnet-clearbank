@@ -7,20 +7,20 @@ namespace ClearBank.DeveloperTest.Services
     {
         public ValidationService()
         {
-            Validators = new Dictionary<string, IValidator>
+            Validators = new Dictionary<PaymentScheme, IValidator>
             {
-                { PaymentScheme.Bacs.ToString(), new BacsValidator() },
-                { PaymentScheme.FasterPayments.ToString(), new FasterPaymentsValidator() },
-                { PaymentScheme.Chaps.ToString(), new ChapsValidator()}
+                { PaymentScheme.Bacs, new BacsValidator() },
+                { PaymentScheme.FasterPayments, new FasterPaymentsValidator() },
+                { PaymentScheme.Chaps, new ChapsValidator()}
             };
         }
 
-        public Dictionary<string, IValidator> Validators { get; set; }
+        public Dictionary<PaymentScheme, IValidator> Validators { get; set; }
 
         public bool IsRequestValid(Account account, MakePaymentRequest request)
         {
             IValidator validator;
-            if (!Validators.TryGetValue(request.PaymentScheme.ToString(), out validator))
+            if (!Validators.TryGetValue(request.PaymentScheme, out validator))
             {
                 return false;
             }

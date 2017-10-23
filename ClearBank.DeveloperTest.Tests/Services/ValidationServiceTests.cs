@@ -10,26 +10,30 @@ namespace ClearBank.DeveloperTest.Tests.Services
     public class ValidationServiceTests
     {
         private ValidationService _validationService;
-        private Mock<IValidator> _validatorMock;
-
+        private Mock<BacsValidator> _bacsValidatorMock;
+        private Mock<FasterPaymentsValidator> _fasterPaymentsValidatorMoq;
+        private Mock<ChapsValidator> _chapsValidatorMoq;
+        
         [SetUp]
         public void Setup()
         {
-            _validatorMock = new Mock<IValidator>();
+            _bacsValidatorMock = new Mock<BacsValidator>();
+            _fasterPaymentsValidatorMoq = new Mock<FasterPaymentsValidator>();
+            _chapsValidatorMoq = new Mock<ChapsValidator>();
 
             _validationService = new ValidationService
             {
-                Validators = new Dictionary<string, IValidator>
+                Validators = new Dictionary<PaymentScheme, IValidator>
                 {
-                    { PaymentScheme.Bacs.ToString(), _validatorMock.Object },
-                    { PaymentScheme.FasterPayments.ToString(), _validatorMock.Object },
-                    { PaymentScheme.Chaps.ToString(), _validatorMock.Object }
+                    { PaymentScheme.Bacs, _bacsValidatorMock.Object },
+                    { PaymentScheme.FasterPayments, _fasterPaymentsValidatorMoq.Object },
+                    { PaymentScheme.Chaps, _chapsValidatorMoq.Object }
                 }
             };
         }
 
         [Test]
-        public void IsRequestValid_NoPaymentScheme_UsesDefaultValidator()
+        public void IsRequestValid_NoPaymentScheme_UsesFasterPaymentsValidator()
         {
             //Arrange            
 
@@ -37,22 +41,46 @@ namespace ClearBank.DeveloperTest.Tests.Services
             _validationService.IsRequestValid(new Account(), new MakePaymentRequest());
 
             //Assert
-            _validatorMock.Verify(x => x.IsValid(It.IsAny<Account>(), It.IsAny<MakePaymentRequest>()), Times.Once);
+            _fasterPaymentsValidatorMoq.Verify(x => x.IsValid(It.IsAny<Account>(), It.IsAny<MakePaymentRequest>()), Times.Once);
         }
 
-        [TestCase(PaymentScheme.FasterPayments)]
-        [TestCase(PaymentScheme.Chaps)]
-        [TestCase(PaymentScheme.Bacs)]
-        public void IsRequestValid_SpecifiedPaymentScheme_UsesValidator(PaymentScheme paymentScheme)
+        [Test]
+        public void IsRequestValid_FasterPayments_UsesFasterPaymentsValidator()
         {
             //Arrange
-            var makePaymentRequest = new MakePaymentRequest { PaymentScheme = paymentScheme};
+            var makePaymentRequest = new MakePaymentRequest { PaymentScheme = PaymentScheme.FasterPayments};
 
             //Act
             _validationService.IsRequestValid(new Account(), makePaymentRequest);
 
             //Assert
-            _validatorMock.Verify(x => x.IsValid(It.IsAny<Account>(), It.IsAny<MakePaymentRequest>()), Times.Once);
+            _fasterPaymentsValidatorMoq.Verify(x => x.IsValid(It.IsAny<Account>(), It.IsAny<MakePaymentRequest>()), Times.Once);
+        }
+
+        [Test]
+        public void IsRequestValid_Chaps_UsesChapsValidator()
+        {
+            //Arrange
+            var makePaymentRequest = new MakePaymentRequest { PaymentScheme = PaymentScheme.Chaps };
+
+            //Act
+            _validationService.IsRequestValid(new Account(), makePaymentRequest);
+
+            //Assert
+            _chapsValidatorMoq.Verify(x => x.IsValid(It.IsAny<Account>(), It.IsAny<MakePaymentRequest>()), Times.Once);
+        }
+
+        [Test]
+        public void IsRequestValid_Bacs_UsesBacsValidator()
+        {
+            //Arrange
+            var makePaymentRequest = new MakePaymentRequest { PaymentScheme = PaymentScheme.Bacs };
+
+            //Act
+            _validationService.IsRequestValid(new Account(), makePaymentRequest);
+
+            //Assert
+            _bacsValidatorMock.Verify(x => x.IsValid(It.IsAny<Account>(), It.IsAny<MakePaymentRequest>()), Times.Once);
         }
     }
 }
