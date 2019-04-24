@@ -1,24 +1,13 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/aal8wvcu63y32v37/branch/master?svg=true)](https://ci.appveyor.com/project/bidwall/dotnet-clearbank/branch/master)
-[![Coverage Status](https://coveralls.io/repos/github/bidwall/dotnet-clearbank/badge.svg?branch=master)](https://coveralls.io/github/bidwall/dotnet-clearbank?branch=master)
-
 # ClearBank
-Solution for a technical test to refactor and add tests to an existing codebase.
+Solution for a technical test to refactor and add tests to an existing codebase - forked from bidwall/dotnet-clearbank.
+Branch containing solution: refactor_from_3c28edbd5f276c46e0e7293e389a5b24e7fc2833
 
-Added Continous Integration by building solution in AppVeyor which includes...
-- Building solution
-- Running tests
-- Generating test coverage report
-- Publishing report
 
 Technology
 ----------
-This uses the following technology...
+Added new projects to create DotNet Core implementation.
 
 - C#
-- .NET 4.7
-- NUnit
+- .NETCore 2.1
+- XUnit
 - Moq
-- AppVeyor
-- OpenCover
-- Coveralls
-- coveralls.io
