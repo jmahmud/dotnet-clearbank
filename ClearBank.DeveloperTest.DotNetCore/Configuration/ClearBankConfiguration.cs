@@ -1,7 +1,9 @@
+using ClearBank.DeveloperTest.DotNetCore.Constants;
+
 namespace ClearBank.DeveloperTest.DotNetCore.Configuration
 {
     public class ClearBankConfiguration
     {
-        public string DataStoreType { get; set; }
+        public DataStoreType DataStoreType { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using ClearBank.DeveloperTest.DotNetCore.Configuration;
+using ClearBank.DeveloperTest.DotNetCore.Constants;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,7 +16,7 @@ namespace ClearBank.DeveloperTest.Data
             {
                 var configuration = provider.GetService<ClearBankConfiguration>();
                 
-                if (configuration.DataStoreType == "Backup")
+                if (configuration.DataStoreType == DataStoreType.Backup)
                 {
                     return new BackupAccountDataStore();
                 }

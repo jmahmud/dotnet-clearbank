@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using ClearBank.DeveloperTest.Data;
 using ClearBank.DeveloperTest.DotNetCore.Configuration;
+using ClearBank.DeveloperTest.DotNetCore.Constants;
 using ClearBank.DeveloperTest.DotNetCore.Services.Validation;
 using ClearBank.DeveloperTest.Services;
 using ClearBank.DeveloperTest.Services.Validation;
@@ -43,7 +44,7 @@ namespace ClearBank.DeveloperTest.Tests.DotNetCore
            
            //ASSERT
            Assert.NotNull(config);
-           Assert.True(config.DataStoreType == "Backup");
+           Assert.True(config.DataStoreType == DataStoreType.Backup);
            
         }
         
@@ -52,7 +53,7 @@ namespace ClearBank.DeveloperTest.Tests.DotNetCore
         public void EnsureBackupAccountDataStoreIsInjected()
         {
             //ARRANGE
-            _sut.AddSingleton(new ClearBankConfiguration() {DataStoreType = "Backup"});
+            _sut.AddSingleton(new ClearBankConfiguration() {DataStoreType = DataStoreType.Backup});
             _sut.AddDataRegistrations();
             InitialseContainer();
             
@@ -69,7 +70,7 @@ namespace ClearBank.DeveloperTest.Tests.DotNetCore
         public void EnsureAccountDataStoreIsInjected()
         {
             //ARRANGE
-            _sut.AddSingleton(new ClearBankConfiguration() {DataStoreType = "SOMETHIGNELSE"});
+            _sut.AddSingleton(new ClearBankConfiguration() {DataStoreType = DataStoreType.Unknown});
             _sut.AddDataRegistrations();
             InitialseContainer();
             
