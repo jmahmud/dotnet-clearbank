@@ -9,19 +9,21 @@ namespace ClearBank.DeveloperTest.DotNetCore.Configuration
     public static class ConfigurationIoCRegistration
     {
         public static void AddConfigurationRegistrations(this ServiceCollection collection, string currentDirectory, string filename)
-        {           
+        {
+            collection.AddTransient(delegate(IServiceProvider provider)
+            {
+                var builder = new ConfigurationBuilder()
+                    .SetBasePath(currentDirectory)
+                    .AddJsonFile(filename);
             
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(currentDirectory)
-                .AddJsonFile(filename);
-
-            var config = builder.Build();
+                var config = builder.Build();
             
-            var clearBankConfig = new ClearBankConfiguration();
+                var clearBankConfig = new ClearBankConfiguration();
+                config.GetSection("ClearBank").Bind(clearBankConfig);
+                return clearBankConfig;
+            });
             
-            config.GetSection("ClearBank").Bind(clearBankConfig);
             
-            collection.AddSingleton(clearBankConfig);
         }
     }
 }
