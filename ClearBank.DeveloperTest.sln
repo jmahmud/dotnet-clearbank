@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearBank.DeveloperTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearBank.DeveloperTest.Tests", "ClearBank.DeveloperTest.Tests\ClearBank.DeveloperTest.Tests.csproj", "{A3CA1845-E8EC-4B29-8E5C-F1E69CF73F25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearBank.DeveloperTest.DotNetCore", "ClearBank.DeveloperTest.DotNetCore\ClearBank.DeveloperTest.DotNetCore.csproj", "{DC7ABCFE-CA48-4F3C-900F-AAD1ED96B3F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "netframework", "netframework", "{EB8D54C5-B7C8-40D9-A9ED-A23635F94EDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{5C0FAE8F-DC08-4FA5-8D51-2E04991BD9E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearBank.DeveloperTest.Tests.DotNetCore", "ClearBank.DeveloperTest.Tests.DotNetCore\ClearBank.DeveloperTest.Tests.DotNetCore.csproj", "{63159FF0-906D-466A-968E-86429E3E2798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +29,22 @@ Global
 		{A3CA1845-E8EC-4B29-8E5C-F1E69CF73F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3CA1845-E8EC-4B29-8E5C-F1E69CF73F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3CA1845-E8EC-4B29-8E5C-F1E69CF73F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7ABCFE-CA48-4F3C-900F-AAD1ED96B3F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7ABCFE-CA48-4F3C-900F-AAD1ED96B3F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7ABCFE-CA48-4F3C-900F-AAD1ED96B3F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7ABCFE-CA48-4F3C-900F-AAD1ED96B3F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63159FF0-906D-466A-968E-86429E3E2798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63159FF0-906D-466A-968E-86429E3E2798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63159FF0-906D-466A-968E-86429E3E2798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63159FF0-906D-466A-968E-86429E3E2798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B180045-B13B-443E-82AF-E6F1D1247111} = {EB8D54C5-B7C8-40D9-A9ED-A23635F94EDD}
+		{A3CA1845-E8EC-4B29-8E5C-F1E69CF73F25} = {EB8D54C5-B7C8-40D9-A9ED-A23635F94EDD}
+		{DC7ABCFE-CA48-4F3C-900F-AAD1ED96B3F2} = {5C0FAE8F-DC08-4FA5-8D51-2E04991BD9E4}
+		{63159FF0-906D-466A-968E-86429E3E2798} = {5C0FAE8F-DC08-4FA5-8D51-2E04991BD9E4}
 	EndGlobalSection
 EndGlobal
