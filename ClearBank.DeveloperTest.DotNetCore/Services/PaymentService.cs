@@ -8,11 +8,13 @@ namespace ClearBank.DeveloperTest.Services
     {
         private readonly IAccountService _accountService;
         private readonly IPaymentValidationService _paymentValidationService;
+        private readonly IPaymentProcessService _paymentProcessService;
 
-        public PaymentService(IAccountService accountService, IPaymentValidationService paymentValidationService)
+        public PaymentService(IAccountService accountService, IPaymentValidationService paymentValidationService, IPaymentProcessService paymentProcessService)
         {
             _accountService = accountService;
             _paymentValidationService = paymentValidationService;
+            _paymentProcessService = paymentProcessService;
         }
         
         public MakePaymentResult MakePayment(MakePaymentRequest request)
@@ -23,8 +25,10 @@ namespace ClearBank.DeveloperTest.Services
             
             if (account != null && _paymentValidationService.Validate(request, account))
             {
-                account.Balance -= request.Amount;
+                account.Balance = _paymentProcessService.CalculateBalance(request, account);
+                
                 _accountService.UpdateAccount(account);
+                
                 result.Success = true;
             }
 
